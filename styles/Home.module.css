@@ -112,7 +112,16 @@
   height: 1em;
   margin-left: 0.5rem;
 }
+.alert_link {
+  margin-top: 5%;
+  font-size: x-large;
+}
 
+.maintext {
+  margin-top: 5%;
+  font-size: larger;
+  color: rgb(93, 172, 128);
+}
 @media (max-width: 600px) {
   .grid {
     width: 100%;

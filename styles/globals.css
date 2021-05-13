@@ -14,3 +14,48 @@ a {
 * {
   box-sizing: border-box;
 }
+.alert_link_inner {
+  animation: abc 3s ease forwards infinite;
+}
+@keyframes abc {
+  from {
+    color: #0070f3;
+  }
+  to {
+    color: purple;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 90%;
+  width: 30rem;
+  min-width: fit-content;
+  align-items: center;
+}
+.form_header {
+  width: fit-content;
+  font-size: 2.5rem;
+  padding: 2%;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 600;
+  color: lightseagreen;
+}
+.form > div > label {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-size: 1.3rem;
+}
+.form > div > input {
+  width: 95%;
+  height: 2.5rem;
+  margin-bottom: 2%;
+  font-size: 1rem;
+  padding-left: 1rem;
+}
+.form > div > input:focus {
+  outline: none;
+  border: 2px solid purple;
+}
