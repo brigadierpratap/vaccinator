@@ -35,6 +35,7 @@ a {
   align-items: center;
 }
 .form_header {
+  text-align: center;
   width: fit-content;
   font-size: 2.5rem;
   padding: 2%;
@@ -49,7 +50,7 @@ a {
   font-size: 1.3rem;
 }
 .form > div > input {
-  width: 95%;
+  width: 98%;
   height: 2.5rem;
   margin-bottom: 2%;
   font-size: 1rem;
@@ -58,4 +59,19 @@ a {
 .form > div > input:focus {
   outline: none;
   border: 2px solid purple;
+}
+
+.form > button {
+  font-size: 1.2rem;
+  min-width: 9rem;
+  line-height: 2rem;
+  cursor: pointer;
+  background: rgb(18, 14, 84);
+  background: linear-gradient(
+    25deg,
+    rgba(18, 14, 84, 1) 0%,
+    rgba(16, 16, 152, 1) 42%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  color: white;
 }
