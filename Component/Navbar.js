@@ -1,13 +1,26 @@
-export default Navbar = () => {
+import Image from "next/image";
+import Link from "next/link";
+
+function NavbarComp() {
   return (
-    <div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            Navbar
-          </a>
+    <>
+      <nav
+        className="navbar navbar-expand-lg navbar-dark bg-dark "
+        style={{
+          width: "100%",
+          paddingLeft: "4%",
+          paddingRight: "4%",
+        }}
+      >
+        <div className="container-fluid">
+          <Link href="/">
+            <a className="navbar-brand nav-brand">
+              <Image src="/inj.svg" width={30} height={30} className="mr-2" />
+              Vaccinator
+            </a>
+          </Link>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -15,66 +28,51 @@ export default Navbar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <Link href="/">
+                  <a className="nav-link active" aria-current="page">
+                    Home
+                  </a>
+                </Link>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Link
-                </a>
+              <li className="nav-item">
+                <Link href="/add-alert">
+                  <a className="nav-link active">Add Alert</a>
+                </Link>
               </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
+            </ul>
+            <ul className="navbar-nav mr-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <Link href="https://github.com/brigadierpratap">
+                  <a
+                    className="nav-link active nav-social"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image src="/git.svg" width={30} height={30} />
+                  </a>
+                </Link>
               </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link disabled"
-                  href="#"
-                  tabindex="-1"
-                  aria-disabled="true"
-                >
-                  Disabled
-                </a>
+              <li className="nav-item">
+                <Link href="https://github.com/brigadierpratap">
+                  <a
+                    className="nav-link active nav-social"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image src="/lin.svg" width={30} height={30} />
+                  </a>
+                </Link>
               </li>
             </ul>
           </div>
         </div>
       </nav>
-    </div>
+    </>
   );
-};
+}
+export default NavbarComp;

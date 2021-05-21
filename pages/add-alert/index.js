@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
+import NavbarComp from "../../Component/Navbar";
 import styles from "../../styles/Home.module.css";
 
 function AddAlert(props) {
@@ -22,7 +23,7 @@ function AddAlert(props) {
     e.preventDefault();
     const obj = { email: email, name: name, pinCode: pinCode, age: age };
     console.log(props);
-    /* await fetch(process.env.API_URL + "/postUser", {
+    await fetch(process.env.API_URL + "/postUser", {
       method: "POST",
 
       body: JSON.stringify(obj),
@@ -45,10 +46,10 @@ function AddAlert(props) {
       })
       .catch(err => {
         setResp("Error! Try again");
-      }); */
+      });
   };
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Add Details</title>
         <meta
@@ -56,11 +57,32 @@ function AddAlert(props) {
           content="Dynamic vaccine slot availabilty nptifier"
         />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        // bootstrap CDN
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+          crossOrigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+          crossOrigin="anonymous"
+        ></script>
       </Head>
-
-      <main className={styles.main} style={{ width: "100%" }}>
-        {/*         <Navbar />
-         */}{" "}
+      <NavbarComp />
+      <main
+        className={styles.main}
+        style={{
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1618675523007-d8ecac3ded75?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
         <form onSubmit={handleSubmit} className="form">
           <div className="form_header">Enter Your Details</div>
           <div
@@ -101,7 +123,7 @@ function AddAlert(props) {
                 checked={age}
                 onChange={handleChange}
               />{" "}
-              Age limit 45+
+              Age limit 45+ (check if true)
             </label>
           </div>
           <button type="submit">Submit</button>
@@ -109,46 +131,25 @@ function AddAlert(props) {
       </main>
 
       <footer className={styles.footer}>
+        <span>Created with &#10084;&#65039;by </span>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://github.com/brigadierpratap"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
+          &nbsp; Pawan Singh
+        </a>
+        <span> &nbsp;and</span>
+        <a
+          href="https://www.linkedin.com/in/gauravsengar"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          &nbsp; Gaurav Singh
         </a>
       </footer>
     </div>
   );
-}
-
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts.
-  // You can use any data fetching library
-  const res = await fetch(
-    "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=821115&date=14-05-2021",
-    {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        Accept: "application/json",
-        "user-agent":
-          "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36",
-      },
-    }
-  );
-  console.log(res.status);
-  const posts = await res.json();
-
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
-  return {
-    props: {
-      posts,
-    },
-  };
 }
 
 export default AddAlert;

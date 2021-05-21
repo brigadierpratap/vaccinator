@@ -1,11 +1,15 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Link from "next/link";
+import NavbarComp from "../Component/Navbar";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div
+      style={{ display: "flex", minHeight: "100vh", flexDirection: "column" }}
+    >
       <Head>
         <title>Vaccinator</title>
         <meta
@@ -14,10 +18,10 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <NavbarComp />
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Vaccine Notifier</a>
+          Welcome to <a href="/add-alert">Vaccine Notifier</a>
         </h1>
         <div className={styles.alert_link}>
           {" "}
@@ -30,18 +34,34 @@ export default function Home() {
           Not getting slots for vaccine, get notified for available slots in
           your area.
         </div>
+        <div style={{ marginTop: "3%", textAlign: "center" }}>
+          If you want to contribute to this project visit{" "}
+          <a
+            href="https://github.com/brigadierpratap/vaccinator"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            here
+          </a>
+        </div>
       </main>
 
       <footer className={styles.footer}>
+        <span>Created with &#10084;&#65039;by </span>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://github.com/brigadierpratap"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
+          &nbsp; Pawan Singh
+        </a>
+        <span> &nbsp;and</span>
+        <a
+          href="https://www.linkedin.com/in/gauravsengar"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          &nbsp; Gaurav Singh
         </a>
       </footer>
     </div>

@@ -15,6 +15,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .footer {
@@ -24,15 +25,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: black;
 }
 
 .footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
+  color: white;
+  text-decoration: none;
 }
-
+.footer span {
+  color: white;
+  text-decoration: none;
+}
 .title a {
   color: #0070f3;
   text-decoration: none;
@@ -121,10 +124,22 @@
   margin-top: 5%;
   font-size: larger;
   color: rgb(93, 172, 128);
+  text-align: center;
 }
+.main-cont {
+  height: 100%;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+  .main {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+  .title {
+    font-size: xxx-large !important;
   }
 }
