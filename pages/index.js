@@ -47,22 +47,25 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        <span>Created with &#10084;&#65039;by </span>
-        <a
-          href="https://github.com/brigadierpratap"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          &nbsp; Pawan Singh
-        </a>
-        <span> &nbsp;and</span>
-        <a
-          href="https://www.linkedin.com/in/gauravsengar"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          &nbsp; Gaurav Singh
-        </a>
+        <span>Created with &#10084;&#65039; &nbsp;by </span>
+        <span>
+          {" "}
+          <a
+            href="https://github.com/brigadierpratap"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            &nbsp; Pawan Singh
+          </a>
+          <span> &nbsp;and</span>
+          <a
+            href="https://www.linkedin.com/in/gauravsengar"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            &nbsp; Gaurav Singh
+          </a>
+        </span>
       </footer>
     </div>
   );

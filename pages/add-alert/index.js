@@ -40,12 +40,16 @@ function AddAlert(props) {
           setAge(true);
           setResp("Submitted Successfully! Keep checking your email.");
         } else {
-          const e = new Error("Failure");
+          const e = new Error(data.message);
           throw e;
         }
       })
       .catch(err => {
-        setResp("Error! Try again");
+        setResp(
+          err.message.indexOf("email_1 dup key") >= 0
+            ? "EmailId already exists!"
+            : "Try Again!"
+        );
       });
   };
   return (
@@ -126,27 +130,33 @@ function AddAlert(props) {
               Age limit 45+ (check if true)
             </label>
           </div>
+          <div className="form-feedback small mb-4" style={{ color: "red" }}>
+            {resp}
+          </div>
           <button type="submit">Submit</button>
         </form>
       </main>
 
       <footer className={styles.footer}>
-        <span>Created with &#10084;&#65039;by </span>
-        <a
-          href="https://github.com/brigadierpratap"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          &nbsp; Pawan Singh
-        </a>
-        <span> &nbsp;and</span>
-        <a
-          href="https://www.linkedin.com/in/gauravsengar"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          &nbsp; Gaurav Singh
-        </a>
+        <span>Created with &#10084;&#65039; &nbsp;by </span>
+        <span>
+          {" "}
+          <a
+            href="https://github.com/brigadierpratap"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            &nbsp; Pawan Singh
+          </a>
+          <span> &nbsp;and</span>
+          <a
+            href="https://www.linkedin.com/in/gauravsengar"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            &nbsp; Gaurav Singh
+          </a>
+        </span>
       </footer>
     </div>
   );
