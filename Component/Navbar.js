@@ -58,7 +58,7 @@ function NavbarComp() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="https://github.com/brigadierpratap">
+                <Link href="https://www.linkedin.com/in/pawan-singh-4b3b8618b">
                   <a
                     className="nav-link active nav-social"
                     target="_blank"
