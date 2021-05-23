@@ -10,6 +10,8 @@ function AddAlert(props) {
   const [pinCode, setPinCode] = useState("");
   const [age, setAge] = useState(true);
   const [resp, setResp] = useState("");
+  const [modal, setmodal] = useState(false);
+  const [modEmail, setModEmail] = useState("");
   const handleChange = e => {
     e.preventDefault();
     if (e.target.name === "email") setEmail(e.target.value);
@@ -22,7 +24,6 @@ function AddAlert(props) {
   const handleSubmit = async e => {
     e.preventDefault();
     const obj = { email: email, name: name, pinCode: pinCode, age: age };
-    console.log(props);
     await fetch(process.env.API_URL + "/postUser", {
       method: "POST",
 
@@ -40,7 +41,6 @@ function AddAlert(props) {
           setAge(true);
           setResp("Submitted Successfully! Keep checking your email.");
         } else {
-          console.log(data);
           const e = new Error(data.message);
           throw e;
         }
@@ -49,8 +49,35 @@ function AddAlert(props) {
         setResp(
           err.message.indexOf("email_1 dup key") >= 0
             ? "EmailId already exists!"
-            : "Try Again!"
+            : err.message.indexOf("Invalid") >= 0
+            ? err.message
+            : "Try Again"
         );
+      });
+  };
+  const unsubscribe = async email => {
+    await fetch(process.env.API_URL + "/unsub", {
+      method: "POST",
+
+      body: JSON.stringify({ email }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 1) {
+          window.alert("Unsubscribed!");
+          setModEmail("");
+          setmodal(false);
+        } else {
+          window.alert("Try Again!");
+          setModEmail("");
+          setmodal(false);
+        }
+      })
+      .catch(err => {
+        console.log(err.message);
       });
   };
   return (
@@ -59,9 +86,9 @@ function AddAlert(props) {
         <title>Add Details</title>
         <meta
           name="description"
-          content="Dynamic vaccine slot availabilty nptifier"
+          content="Dynamic vaccine slot availabilty notifier"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/inj.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         // bootstrap CDN
@@ -88,7 +115,11 @@ function AddAlert(props) {
           backgroundSize: "cover",
         }}
       >
-        <form onSubmit={handleSubmit} className="form">
+        <form
+          onSubmit={handleSubmit}
+          className="form"
+          style={{ paddingBottom: "2%" }}
+        >
           <div className="form_header">Enter Your Details</div>
           <div
             style={{ display: "flex", flexDirection: "column", width: "100%" }}
@@ -136,7 +167,52 @@ function AddAlert(props) {
             {resp}
           </div>
           <button type="submit">Submit</button>
+          <div
+            style={{ marginTop: "5%", color: "#0070f3", cursor: "pointer" }}
+            onClick={() => {
+              setmodal(!modal);
+            }}
+          >
+            Unsubscribe from mailing list.
+          </div>
         </form>
+        {modal && (
+          <div
+            className="pop-ovr-cont"
+            onClick={() => {
+              setmodal(!modal);
+              setModEmail("");
+            }}
+          >
+            <div
+              className="pop-inner"
+              onClick={e => {
+                e.stopPropagation();
+              }}
+            >
+              <span>Enter your email</span>
+              <input
+                type="email"
+                value={modEmail}
+                onChange={e => {
+                  setModEmail(e.target.value);
+                }}
+                onKeyPress={e => {
+                  if (e.key === "Enter") {
+                    unsubscribe(modEmail);
+                  }
+                }}
+              />
+              <button
+                onClick={e => {
+                  unsubscribe(modEmail);
+                }}
+              >
+                Unsubscribe
+              </button>
+            </div>
+          </div>
+        )}
       </main>
 
       <footer className={styles.footer}>

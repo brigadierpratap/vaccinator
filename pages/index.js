@@ -14,9 +14,9 @@ export default function Home() {
         <title>Vaccinator</title>
         <meta
           name="description"
-          content="Dynamic vaccine slot availabilty nptifier"
+          content="Dynamic vaccine slot availabilty notifier"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/inj.svg" />
       </Head>
       <NavbarComp />
       <main className={styles.main}>
