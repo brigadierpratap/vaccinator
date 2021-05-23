@@ -13,11 +13,23 @@ function AddAlert(props) {
   const [modal, setmodal] = useState(false);
   const [modEmail, setModEmail] = useState("");
   const handleChange = e => {
-    e.preventDefault();
     if (e.target.name === "email") setEmail(e.target.value);
     else if (e.target.name === "name") setName(e.target.value);
-    else if (e.target.name === "pinCode") setPinCode(e.target.value);
-    else if (e.target.name === "age") setAge(e.target.checked);
+    else if (e.target.name === "pinCode") {
+      if (
+        isNaN(Number(e.target.value)) ||
+        String(e.target.value).length > 6 ||
+        String(e.target.value).length < 6
+      ) {
+        setResp("Invalid Pin Code");
+        setPinCode(e.target.value);
+        return;
+      }
+      setPinCode(e.target.value);
+    } else if (e.target.name === "age") {
+      setAge(e.target.checked);
+      console.log(age);
+    }
     setResp("");
     return;
   };
@@ -158,9 +170,8 @@ function AddAlert(props) {
                 name="age"
                 checked={age}
                 onChange={handleChange}
-                value={age}
-              />{" "}
-              Age limit 45+ (check if true)
+              />
+              &nbsp;Age limit 45+ (check if true)
             </label>
           </div>
           <div className="form-feedback small mb-4" style={{ color: "red" }}>
