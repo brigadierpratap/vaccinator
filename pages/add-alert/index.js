@@ -40,6 +40,7 @@ function AddAlert(props) {
           setAge(true);
           setResp("Submitted Successfully! Keep checking your email.");
         } else {
+          console.log(data);
           const e = new Error(data.message);
           throw e;
         }
@@ -126,6 +127,7 @@ function AddAlert(props) {
                 name="age"
                 checked={age}
                 onChange={handleChange}
+                value={age}
               />{" "}
               Age limit 45+ (check if true)
             </label>
